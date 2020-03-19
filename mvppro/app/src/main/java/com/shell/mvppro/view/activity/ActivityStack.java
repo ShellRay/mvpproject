@@ -6,15 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>Copyright: Copyright (c) 2016</p>
- *
- * <p>Company: 浙江齐聚科技有限公司<a href="www.guagua.cn">www.guagua.cn</a></p>
- *
- * @description Activity运行栈的实现类,用于完全退出程序
- *
- * @author 薛文超
- * @modify
- * @version 1.0.0
  */
 public class ActivityStack {
 	public static List<Activity> mActivityList = new ArrayList<Activity>();

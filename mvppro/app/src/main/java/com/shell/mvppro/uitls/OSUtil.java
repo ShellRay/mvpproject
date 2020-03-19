@@ -30,8 +30,6 @@ import java.util.regex.Pattern;
 
 /**
  * 设备系统工具类
- * 作者： JairusTse
- * 日期： 17/12/19
  */
 
 public class OSUtil {

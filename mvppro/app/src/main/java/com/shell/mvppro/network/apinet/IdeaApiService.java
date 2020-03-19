@@ -15,7 +15,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
- * Created by dell on 2017/4/1.
  */
 
 public interface IdeaApiService {
