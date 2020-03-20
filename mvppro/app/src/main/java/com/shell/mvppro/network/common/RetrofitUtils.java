@@ -3,7 +3,7 @@ package com.shell.mvppro.network.common;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.shell.mvppro.network.converter.GsonConverterFactory;
+import com.shell.mvppro.network.interceptor.BiliInterceptor;
 import com.shell.mvppro.network.interceptor.HttpCacheInterceptor;
 import com.shell.mvppro.network.interceptor.HttpHeaderInterceptor;
 import com.shell.mvppro.network.interceptor.LoggingInterceptor;
@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  */
@@ -27,8 +28,9 @@ public class RetrofitUtils {
         return new OkHttpClient.Builder()
                 .readTimeout(Constants.DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
                 .connectTimeout(Constants.DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
-                .addInterceptor(new LoggingInterceptor())
-                .addInterceptor(new HttpHeaderInterceptor())
+//                .addInterceptor(new LoggingInterceptor())
+//                .addInterceptor(new HttpHeaderInterceptor())
+                .addInterceptor(new BiliInterceptor())
                 .addNetworkInterceptor(new HttpCacheInterceptor())
                // .sslSocketFactory(SslContextFactory.getSSLSocketFactoryForTwoWay())  // https认证 如果要使用https且为自定义证书 可以去掉这两行注释，并自行配制证书。
                // .hostnameVerifier(new SafeHostnameVerifier())
@@ -40,7 +42,7 @@ public class RetrofitUtils {
         OkHttpClient okHttpClient = getOkHttpClientBuilder().build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())//GsonConverterFactory.create(gson)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl);
     }

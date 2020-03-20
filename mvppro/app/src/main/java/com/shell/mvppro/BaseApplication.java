@@ -72,7 +72,7 @@ public class BaseApplication extends MultiDexApplication implements DefaultExcep
 	 */
 	protected void init() {
 
-		version = getVersionName(getApplicationContext());
+//		version = getVersionName(getApplicationContext());
 
 		language = getResources().getConfiguration().locale.getCountry(); // 返回值是语言的代码，比如中文就“zh”
 		if (TextUtils.isEmpty(language)) {

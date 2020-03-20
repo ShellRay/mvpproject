@@ -1,5 +1,6 @@
 package com.shell.mvppro.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -65,8 +66,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.LoginPa
 
     @Override
     public void showTips(String tips) {
-        Toast.makeText(this,tips,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,tips,Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(LoginActivity.this,MainHallActivity.class));
     }
 
-
+    @Override
+    protected boolean hasCustomTitle() {
+        return false;
+    }
 }

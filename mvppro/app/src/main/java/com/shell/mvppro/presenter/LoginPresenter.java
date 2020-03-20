@@ -1,15 +1,13 @@
 package com.shell.mvppro.presenter;
 
 import android.content.Context;
-import android.os.Looper;
 
 import com.shell.mvppro.basemvp.base.BasePresenter;
 import com.shell.mvppro.basemvp.callback.NetworkCallback;
 import com.shell.mvppro.basemvp.inject.InjectModel;
-import com.shell.mvppro.bean.LoginBean;
 import com.shell.mvppro.bean.LoginResponse;
 import com.shell.mvppro.contract.LoginContract;
-import com.shell.mvppro.model.LoginModle;
+import com.shell.mvppro.model.LoginModel;
 
 import java.util.regex.Pattern;
 
@@ -21,13 +19,13 @@ import java.util.regex.Pattern;
 public class LoginPresenter extends BasePresenter<LoginContract.LoginPageView> implements LoginContract.LoginPresenter {
 
     @InjectModel
-    LoginModle modle;
+    LoginModel model;
 
     @Override
     public void reqLoginP(Context context,String userId, String passPort) {
         boolean beforeLogin = verifyBeforeLogin(userId,passPort);
         if(beforeLogin) {
-            modle.reqLoginM(context,userId, passPort, new NetworkCallback<LoginResponse>() {
+            model.reqLoginM(context,userId, passPort, new NetworkCallback<LoginResponse>() {
                 @Override
                 public void onSuccess(LoginResponse baseBean) {
                     getView().loginStateView(baseBean);

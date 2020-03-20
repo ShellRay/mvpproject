@@ -14,7 +14,6 @@ public class BaseModel {
 //    protected SingRequest singRequest;
     protected Map<Integer, NetworkCallback> callbacks;
     public BaseModel(){
-//        EventBusManager.getInstance().register(this);
 //        singRequest = new SingRequest();
         callbacks = new HashMap<>();
     }
