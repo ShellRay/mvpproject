@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/bangumi_common_ic_video_danmakus"
+            android:title="首页"
+            android:checked="true"/>
+        <item
+            android:id="@+id/nav_vip"
+            android:icon="@mipmap/ic_category_selected"
+            android:title="vip" />
+
+        <item
+            android:id="@+id/nav_activity"
+            android:icon="@mipmap/ic_communicate_selected"
+            android:title="活动" />
+
+        <item
+            android:id="@+id/nav_discovery"
+            android:icon="@mipmap/ic_dynamic_selected"
+            android:title="发现" />
+
+        <item
+            android:id="@+id/nav_fuli"
+            android:icon="@mipmap/bangumi_common_ic_video_views"
+            android:title="福利" />
+    </group>
+
+
+</menu>

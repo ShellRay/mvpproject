@@ -1,5 +1,6 @@
 package com.shell.mvppro;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shell.mvppro.uitls.Utils;
 
 /**
@@ -13,5 +14,6 @@ public class MvpApplication extends BaseApplication{
     public void onCreate() {
         super.onCreate();
         Utils.init(this);
+        Fresco.initialize(this);
     }
 }

@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.shell.mvppro.R;
+import com.shell.mvppro.basemvp.base.BaseView;
+import com.shell.mvppro.basemvp.proxy.ActivityMvpProxyImpl;
 import com.shell.mvppro.uitls.AppBarUtil;
 import com.shell.mvppro.uitls.ColorUtil;
 import com.trello.rxlifecycle2.components.support.RxFragment;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  */
 
-public abstract class BaseFragment extends RxFragment {
+public abstract class BaseFragment extends RxFragment implements BaseView {
     /**
      * 是否是第一次可视
      */
@@ -57,6 +59,7 @@ public abstract class BaseFragment extends RxFragment {
      * 标题视图
      */
     private int mTitleViewId = R.layout.layout_title;
+    private ActivityMvpProxyImpl activityMvpProxy;
 
     /**
      * 初始化
@@ -76,6 +79,7 @@ public abstract class BaseFragment extends RxFragment {
         }
 
         init();
+        createProxy();
         mStatusBarViewBG = ColorUtil.parserColor(ContextCompat.getColor(mContext, R.color.white));
         preInitStatusBar();
         View mainView = inflater.inflate(R.layout.fragment_base, container, false);
@@ -83,7 +87,6 @@ public abstract class BaseFragment extends RxFragment {
         mContentContainer = mainView.findViewById(R.id.viewstub_content_container);
         mContentContainer.setLayoutResource(setContentLayoutResID());
         mContentContainer.inflate();
-        mContentContainer.setVisibility(View.GONE);
         ButterKnife.bind(this,mainView);
         //添加titleview
         View titleView = inflater.inflate(mTitleViewId, container, false);
@@ -215,5 +218,18 @@ public abstract class BaseFragment extends RxFragment {
 
     public void setRefreshListener(RefreshListener mRefreshListener) {
         this.mRefreshListener = mRefreshListener;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        activityMvpProxy.unbindPresenter();
+    }
+
+    private void createProxy() {
+        if(activityMvpProxy == null){
+            activityMvpProxy = new ActivityMvpProxyImpl(this);
+        }
+        activityMvpProxy.bindAndCreatePresenter();
     }
 }

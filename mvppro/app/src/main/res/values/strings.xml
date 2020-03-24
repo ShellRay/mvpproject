@@ -18,5 +18,9 @@
     <string name="remote_login">您的账号已在其它设备上登录，如非本人操作，请及时修改密码！</string>
     <string name="invalid_status">登录状态已失效，请重新登录</string>
 
+    <string name="section_region">分区</string>
+    <string name="section_home">首页</string>
+    <string name="section_dynamic">动态</string>
+    <string name="section_message">消息</string>
 
 </resources>

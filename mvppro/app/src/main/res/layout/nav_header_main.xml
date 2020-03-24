@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="185dp"
+    android:background="@color/colorPrimary"
+    android:gravity="bottom"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/list_item_avatar_large_size"
+        android:layout_height="@dimen/list_item_avatar_large_size"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/avatar_top_margin"
+        android:src="@mipmap/ic_category_selected"
+        app:layout_constraintLeft_toLeftOf="@id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@id/constraintLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginLeft="@dimen/height_20dp"
+        android:text="登录"
+        android:textSize="@dimen/text_size_normal"
+        android:textColor="@color/color_light_blue"
+        app:layout_constraintLeft_toLeftOf="@id/iv_avatar"
+        app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bili_drawerbg_not_logined"
+        android:tint="@color/color_light_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintRight_toRightOf="@+id/constraintLayout" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:src="@mipmap/ic_switch_night"
+        app:layout_constraintRight_toRightOf="@id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
