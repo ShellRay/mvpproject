@@ -14,7 +14,7 @@
 
 <gradient
     android:startColor="@color/colorPrimary"
-    android:endColor="@color/color_light_blue"
+    android:endColor="#EF1158"
     android:angle="360"
     />
     <corners android:radius="150dp"/>

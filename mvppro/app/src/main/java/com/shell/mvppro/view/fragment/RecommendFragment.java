@@ -36,7 +36,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
 
     public static final String TAG = RecommendFragment.class.getSimpleName();
 
-    private String[] mTitles = {"直播", "推荐", "追番", "分区", "动态", "发现"};
+    private String[] mTitles = {"直播", "推荐", "追番", "分区", "动态"};
     private List<BaseFragment> mFragments = new ArrayList<>();
 
     private NewsPagerAdapter adapter;

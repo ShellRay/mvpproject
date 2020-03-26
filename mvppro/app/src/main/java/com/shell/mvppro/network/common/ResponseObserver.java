@@ -42,6 +42,7 @@ public abstract class ResponseObserver<T> implements Observer<T> {
         Log.e("Retrofit", e.getMessage());
         if (e instanceof HttpException) {     //   HTTP错误
             onException(ExceptionReason.BAD_NETWORK);
+            onFail("请求错误");
         } else if (e instanceof ConnectException
                 || e instanceof UnknownHostException) {   //   连接错误
             onException(ExceptionReason.CONNECT_ERROR);

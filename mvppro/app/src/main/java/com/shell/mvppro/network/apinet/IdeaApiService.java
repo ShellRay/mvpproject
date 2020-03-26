@@ -44,8 +44,7 @@ public interface IdeaApiService {
     @FormUrlEncoded
     @POST("user/login")
     Observable<LoginResponse> login(@FieldMap Map<String, Object> map);
-//    ResponseObserver
-//            RecListResponse
+
     @GET("/x/feed/index")
     Observable<RecListResponse<BiliAppIndex>> getIndex(@Query("appkey") String appkey,
                                                        @Query("build") String build,

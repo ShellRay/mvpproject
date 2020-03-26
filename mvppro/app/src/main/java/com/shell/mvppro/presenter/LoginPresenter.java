@@ -23,8 +23,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.LoginPageView> i
 
     @Override
     public void reqLoginP(Context context,String userId, String passPort) {
-        boolean beforeLogin = verifyBeforeLogin(userId,passPort);
-        if(beforeLogin) {
+
             model.reqLoginM(context,userId, passPort, new NetworkCallback<LoginResponse>() {
                 @Override
                 public void onSuccess(LoginResponse baseBean) {
@@ -33,35 +32,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.LoginPageView> i
 
                 @Override
                 public void failure(String msg) {
-
+                    getView().showTips(msg);
                 }
             });
-        }else {
-            getView().showTips(verifyMsg);
-        }
-
-    }
-    String verifyMsg;
-    private boolean verifyBeforeLogin(String username, String password) {
-        boolean isEmpty = isEmpty(username) || isEmpty(password);
-        boolean isValid = isValid(username) && isValid(password);
-        if (isEmpty) {
-            verifyMsg = "请输入帐号或密码";
-            return false;
-        }
-        if (isValid) {
-            return true;
-        }
-        verifyMsg = "帐号或密码错误";
-        return false;
     }
 
-
-    private boolean isValid(String s) {
-        return Pattern.compile("^[A-Za-z0-9]{3,20}+$").matcher(s).matches();
-    }
-
-    private boolean isEmpty(String s) {
-        return s == null || s.length() == 0;
-    }
 }

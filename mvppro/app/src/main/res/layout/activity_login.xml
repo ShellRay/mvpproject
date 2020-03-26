@@ -9,7 +9,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="80dp"
-            android:text="欢迎登录"
+            android:text="欢迎登录MVP"
             android:textColor="#2F2F2F"
             android:textSize="22dp" />
 
@@ -32,7 +32,6 @@
                 android:textColor="#282828"
                 android:textSize="15dp" />
 
-
             <EditText
                 android:id="@+id/et_username"
                 android:layout_width="match_parent"
@@ -48,8 +47,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_toRightOf="@+id/tv_phonenum"
                 android:layout_alignParentBottom="true"
-                android:background="#F5F5F5"
+                android:background="#666666"
                 />
 
         </RelativeLayout>
@@ -89,7 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
-                android:background="#F5F5F5"
+                android:layout_toRightOf="@+id/tv_password"
+                android:background="#666666"
                 />
 
         </RelativeLayout>

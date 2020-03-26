@@ -10,7 +10,7 @@ import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 /**
- * Created by miserydx on 17/7/11.
+ *
  */
 
 public class ImageUtil {

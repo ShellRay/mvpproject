@@ -2,17 +2,17 @@ package com.shell.mvppro.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shell.mvppro.R;
 import com.shell.mvppro.basemvp.inject.InjectPresenter;
-import com.shell.mvppro.bean.BaseBean;
-import com.shell.mvppro.bean.LoginBean;
 import com.shell.mvppro.bean.LoginResponse;
 import com.shell.mvppro.contract.LoginContract;
 import com.shell.mvppro.presenter.LoginPresenter;
+import com.shell.mvppro.uitls.FastClickUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,25 +53,44 @@ public class LoginActivity extends BaseActivity implements LoginContract.LoginPa
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btn_login)
-    public void onViewClicked() {
-        presenter.reqLoginP(this,etUsername.getText().toString(),etPasscode.getText().toString());
+    @OnClick({R.id.btn_login, R.id.tv_login_way_change})
+    public void onViewClicked(View view) {
+        if (FastClickUtils.isFastClicked()) {
+            return;
+        }
+        switch (view.getId()) {
+
+            case R.id.btn_login:
+                presenter.reqLoginP(this, etUsername.getText().toString(), etPasscode.getText().toString());
+                break;
+            case R.id.tv_login_way_change:
+
+                break;
+
+        }
+
     }
 
 
     @Override
     public void loginStateView(LoginResponse bean) {
-        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showTips(String tips) {
-//        Toast.makeText(this,tips,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(LoginActivity.this,MainHallActivity.class));
+        if (tips.contains("请求错误")) {
+            startActivity(new Intent(LoginActivity.this, MainHallActivity.class));
+            finish();
+        } else {
+            Toast.makeText(this, tips, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     protected boolean hasCustomTitle() {
         return false;
     }
+
+
 }
